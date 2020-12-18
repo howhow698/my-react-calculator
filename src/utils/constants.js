@@ -5,3 +5,6 @@ export const keypadKeys = [
   ['1', '2', '3', '+'],
   ['0', '.', '='],
 ]
+
+export const verticalOperators = ['/', '*', '-', '+', '='];
+export const horizontalOperators = ['AC', '+/-', '%'];

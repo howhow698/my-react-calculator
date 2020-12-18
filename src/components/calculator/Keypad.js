@@ -8,15 +8,25 @@ export default class Keypad extends Component {
   }
   render() {
     return (
-      keypadKeys.map(block => {
-        return block.map(key => (
-          <Calculator.Button
-            key={key}
-            onButtonClick={this.handleClick}
-            buttonKey={key}
-          />
-        ));
-      })
+      <div className="keypad">
+        {
+          keypadKeys.map((block, index) => {
+            return (
+              <div key={index} className="block">
+                {
+                  block.map(key => (
+                    <Calculator.Button
+                      key={key}
+                      onButtonClick={this.handleClick}
+                      buttonKey={key}
+                    />
+                  ))
+                }
+              </div>
+            )
+          })
+        }
+      </div>
     );
   }
 }

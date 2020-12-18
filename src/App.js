@@ -8,7 +8,7 @@ import './App.css';
 export class App extends Component {
   render() {
     return (
-      <div>
+      <div className="calculator--container">
         <Calculator.Screen {...this.props} />
         <Calculator.Keypad {...this.props} />
       </div>
