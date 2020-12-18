@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { keypadKeys } from '../../utils/calculate';
+import { keypadKeys } from '../../utils/constants';
 import Calculator from '../calculator';
 
 export default class Keypad extends Component {
@@ -9,13 +9,13 @@ export default class Keypad extends Component {
   render() {
     return (
       keypadKeys.map(block => {
-        return block.map(key => {
+        return block.map(key => (
           <Calculator.Button
             key={key}
             onButtonClick={this.handleClick}
             buttonKey={key}
           />
-        });
+        ));
       })
     );
   }

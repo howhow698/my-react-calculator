@@ -4,7 +4,7 @@ const Button = ({ onButtonClick, buttonKey }) => {
   let handleClick = () => { onButtonClick(buttonKey) }
   return (
     <button onClick={handleClick}>
-      { buttonKey}
+      {buttonKey}
     </button>
   );
 }
