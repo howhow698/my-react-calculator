@@ -4,7 +4,20 @@ import Calculator from '../calculator';
 
 export default class Keypad extends Component {
   handleClick = (key) => {
-    this.props.calculate(key);
+    switch (key) {
+      case 'AC':
+        this.props.clear();
+        break
+      case '+/-':
+        this.props.takeInverse();
+        break
+      case '=':
+        this.props.evaluate();
+        break
+      default:
+        this.props.calculate(key);
+        break
+    }
   }
   render() {
     return (
