@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { calculate } from './store/actions/calculate';
+import { calculate, clear, takeInverse, evaluateCalculationStatement } from './store/actions/calculate';
 import Calculator from './components/calculator';
 import * as fromCalculator from './store';
 import './App.css';
@@ -28,6 +28,15 @@ const mapDispatchToProps = (dispatch) => {
     calculate: (buttonKey) => {
       dispatch(calculate(buttonKey))
     },
+    clear: () => {
+      dispatch(clear())
+    },
+    takeInverse: () => {
+      dispatch(takeInverse())
+    },
+    evaluate: () => {
+      dispatch(evaluateCalculationStatement())
+    }
   }
 }
 

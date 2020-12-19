@@ -5,7 +5,7 @@ const Screen = (props) => {
   return (
     <div className="screen--container">
       <Textfit
-        max={40}
+        max={30}
         throttle={60}
         mode="single"
         className="screen-top"
@@ -13,7 +13,7 @@ const Screen = (props) => {
         {props.expression}
       </Textfit>
       <Textfit
-        max={150}
+        max={50}
         mode="single"
         className="screen-bottom">
         {props.total}
