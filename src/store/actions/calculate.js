@@ -13,15 +13,13 @@ export const clear = () => {
   }
 }
 
-
 export const takeInverse = () => {
   return {
     type: types.TAKE_INVERSE
   }
 }
 
-
-export const evaluateCalculationStatement = () => {
+export const evaluate = () => {
   return {
     type: types.EVALUATE_CALCULATION_STATEMENT
   }

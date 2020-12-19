@@ -1,8 +1,10 @@
 import { createStore, combineReducers } from 'redux';
 import calculatingReducer from './reducers/calculatingReducer';
+import clickDetectingReducer from './reducers/clickDetectingReducer';
 
 const rootReducer = combineReducers({
-  calculator: calculatingReducer
+  calculator: calculatingReducer,
+  clickDetector: clickDetectingReducer
 })
 
 export default createStore(
@@ -16,5 +18,9 @@ export const getCalculationStatement = (state) => {
 
 export const getTotal = (state) => {
   return state.calculator.total
+}
+
+export const getShowCalculator = (state) => {
+  return state.clickDetector.showCalculator
 }
 

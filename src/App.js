@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { calculate, clear, takeInverse, evaluateCalculationStatement } from './store/actions/calculate';
-import Calculator from './components/calculator';
+import { calculate, clear, takeInverse, evaluate } from './store/actions/calculate';
+import { clickShowCalculator, clickOutsideCalculator } from './store/actions/clickDetect';
+import CalculatorComponents from './components/calculator';
+import Panel from './components/control-panel/Panel';
+
 import * as fromCalculator from './store';
 import './App.css';
 
 export class App extends Component {
   render() {
     return (
-      <div className="calculator--container">
-        <Calculator.Screen {...this.props} />
-        <Calculator.Keypad {...this.props} />
+      <div style={{ display: 'contents' }}>
+        { !this.props.showCalculator &&
+          <Panel {...this.props} />
+        }
+        { this.props.showCalculator &&
+          <CalculatorComponents.Calculator {...this.props} />
+        }
       </div>
     );
   }
@@ -19,7 +26,8 @@ export class App extends Component {
 const mapStateToProps = (state) => {
   return {
     calculateStatement: fromCalculator.getCalculationStatement(state),
-    total: fromCalculator.getTotal(state)
+    total: fromCalculator.getTotal(state),
+    showCalculator: fromCalculator.getShowCalculator(state)
   }
 }
 
@@ -35,7 +43,13 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(takeInverse())
     },
     evaluate: () => {
-      dispatch(evaluateCalculationStatement())
+      dispatch(evaluate())
+    },
+    clickShowCalculator: () => {
+      dispatch(clickShowCalculator())
+    },
+    clickOutsideCalculator: () => {
+      dispatch(clickOutsideCalculator())
     }
   }
 }

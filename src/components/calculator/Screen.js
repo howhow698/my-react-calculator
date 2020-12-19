@@ -10,7 +10,7 @@ const Screen = (props) => {
         mode="single"
         className="screen-top"
       >
-        {props.expression}
+        {props.calculateStatement}
       </Textfit>
       <Textfit
         max={50}
