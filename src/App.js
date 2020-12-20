@@ -1,25 +1,61 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { calculate, clear, takeInverse, evaluate } from './store/actions/calculate';
+import { clickShowCalculator, clickOutsideCalculator } from './store/actions/clickDetect';
+import CalculatorComponents from './components/calculator';
+import Panel from './components/control-panel/Panel';
+
+import * as fromCalculator from './store';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export class App extends Component {
+  render() {
+    return (
+      <div style={{ display: 'contents' }}>
+        { !this.props.showCalculator &&
+          <Panel {...this.props} />
+        }
+        { this.props.showCalculator &&
+          <CalculatorComponents.Calculator {...this.props} />
+        }
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    calculateStatement: fromCalculator.getCalculationStatement(state),
+    total: fromCalculator.getTotal(state),
+    showCalculator: fromCalculator.getShowCalculator(state)
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    calculate: (buttonKey) => {
+      dispatch(calculate(buttonKey))
+    },
+    clear: () => {
+      dispatch(clear())
+    },
+    takeInverse: () => {
+      dispatch(takeInverse())
+    },
+    evaluate: () => {
+      dispatch(evaluate())
+    },
+    clickShowCalculator: () => {
+      dispatch(clickShowCalculator())
+    },
+    clickOutsideCalculator: () => {
+      dispatch(clickOutsideCalculator())
+    }
+  }
+}
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
