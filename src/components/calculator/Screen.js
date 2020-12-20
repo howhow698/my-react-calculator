@@ -1,4 +1,6 @@
 import React from 'react';
+
+// use Textfit to make calculation statement fit into screen element when keep growing
 import { Textfit } from 'react-textfit';
 
 const Screen = (props) => {
