@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Button = ({ onButtonClick }) => {
-  let handleClick = () => { onButtonClick() }
+  const handleClick = () => { onButtonClick() }
 
   return (
     <button
